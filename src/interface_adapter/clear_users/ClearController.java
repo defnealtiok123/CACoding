@@ -12,7 +12,6 @@ public class ClearController {
 
     public void execute(String username) {
         ClearInputData clearInputData = new ClearInputData();
-
         userClearUseCaseInteractor.execute(clearInputData);
     }
 }
