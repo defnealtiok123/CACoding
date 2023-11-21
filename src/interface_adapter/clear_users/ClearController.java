@@ -10,7 +10,7 @@ public class ClearController {
         this.userClearUseCaseInteractor = userClearUseCaseInteractor;
     }
 
-    public void execute(String username) {
+    public void execute() {
         ClearInputData clearInputData = new ClearInputData();
         userClearUseCaseInteractor.execute(clearInputData);
         // There ıs no ınput data. The user just clıcks the clear button and every user wıll get deleted, and the
