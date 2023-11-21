@@ -18,7 +18,7 @@ public class ClearState {
     public ClearState() {
     }
 
-    public List getDeletedUsers() {
+    public ArrayList<String> getDeletedUsers() {
         return deletedUsers;
     }
 
