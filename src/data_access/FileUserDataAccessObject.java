@@ -10,6 +10,7 @@ import java.io.*;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class FileUserDataAccessObject implements SignupUserDataAccessInterface, LoginUserDataAccessInterface,
@@ -99,12 +100,17 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
     }
 
     @Override
-    public String getUsers(){
-        return String.valueOf(accounts.keySet());
+    public ArrayList<String> getUsers(){
+        ArrayList arrayList = new ArrayList<>();
+    for (User user:accounts.values()){
+        arrayList.add(user.getName());
+    }
+    return arrayList;
+
     }
     public void clear(){
         accounts.clear();
-        save();
+        this.save();
     }
 
 }
