@@ -26,4 +26,5 @@ public class InMemoryUserDataAccessObject implements SignupUserDataAccessInterfa
     public void save(User user) {
         users.put(user.getName(), user);
     }
+    // thıs fıle should ımplement the clear user data ınterface and all the methods ın clear
 }
