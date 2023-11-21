@@ -3,6 +3,7 @@ import interface_adapter.ViewModel;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 // TODO Complete me
 
@@ -34,4 +35,5 @@ public class ClearViewModel extends ViewModel {
     public ClearState getState() {
         return state;
     }
+    public ArrayList<String> getUsers() { return state.getDeletedUsers(); }
 }
