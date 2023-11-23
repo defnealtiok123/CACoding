@@ -14,7 +14,6 @@ public class ClearState {
         deletedUsers = copy.deletedUsers;
     }
 
-    // Because of the previous copy constructor, the default constructor must be explicit.
     public ClearState() {
     }
 
@@ -26,7 +25,3 @@ public class ClearState {
         this.deletedUsers = deletedUsers;
     }
 }
-
-
-// your clear state ısn,t gonna be as lengthy as the sıgn up use case. It wıll sımply store the ınformatıon you need to
-// pass on to the vıew; the users. So format ıt ın the way thıs fıle does, but only do ıt for users.

@@ -40,6 +40,7 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         this.clearController = clearController;
         this.clearViewModel = clearViewModel;
         signupViewModel.addPropertyChangeListener(this);
+        clearViewModel.addPropertyChangeListener(this);
 
         JLabel title = new JLabel(SignupViewModel.TITLE_LABEL);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -64,7 +65,6 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
         buttons.add(clear);
 
         signUp.addActionListener(
-                // This creates an anonymous subclass of ActionListener and instantiates it.
                 new ActionListener() {
                     public void actionPerformed(ActionEvent evt) {
                         if (evt.getSource().equals(signUp)) {
@@ -180,17 +180,23 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        SignupState state = (SignupState) evt.getNewValue();
-        if (state.getUsernameError() != null) {
-            JOptionPane.showMessageDialog(this, state.getUsernameError());
+        System.out.println("here");
+        if (evt.getSource().equals(clearViewModel)){
+            ClearState state = (ClearState) evt.getNewValue();
+            if (state.getDeletedUsers() != null) {
+                String clearAllUsers = "";
+                ArrayList<String> clearUsers = clearViewModel.getUsers();
+                for (String clearedUser: clearUsers){
+                    clearAllUsers = clearAllUsers + "\n"  + clearedUser;
+                }
+                JOptionPane.showMessageDialog(this, clearAllUsers);
+                }
         }
-    }
-    public void clearAllUsers(){
-        String clearAllUsers = "";
-        ArrayList<String> clearUsers = clearViewModel.getUsers();
-        for (String clearedUser: clearUsers){
-            clearAllUsers = clearAllUsers + "\n"  + clearedUser;
+        if (evt.getSource().equals(signupViewModel)){
+            SignupState state = (SignupState) evt.getNewValue();
+            if (state.getUsernameError() != null) {
+                JOptionPane.showMessageDialog(this, state.getUsernameError());
+            }
         }
-        JOptionPane.showMessageDialog(this, clearAllUsers);
     }
 }

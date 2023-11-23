@@ -64,7 +64,7 @@ public class SignupUseCaseFactory {
         UserFactory userFactory = new CommonUserFactory();
 
         ClearInputBoundary userClearInteractor = new ClearInteractor(
-                userDataAccessObject);
+                userDataAccessObject, clearOutputBoundary);
 
         return new ClearController(userClearInteractor);
     }
